@@ -8,7 +8,11 @@ module TVDB
     end
 
     def to_s
-      "#{person.name} was born in #{person.birthplace}"
+      if person.nil?
+        "[Unknown] was born in [unknown]"
+      else
+        "#{person.name} was born in #{person.birthplace}"
+      end
     end
 
   end
