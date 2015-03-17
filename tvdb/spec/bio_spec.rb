@@ -1,3 +1,5 @@
+require_relative '../lib/bio'
+
 RSpec.describe TVDB::Bio do
   let(:person) { double('person', name: 'John Doe', birthplace: 'Miami, FL') }
   subject(:bio) { TVDB::Bio.new(person) }
