@@ -8,12 +8,17 @@ module TVDB
     end
 
     def to_s
-      if person.nil?
-        "[Unknown] was born in [unknown]"
-      else
-        "#{person.name} was born in #{person.birthplace}"
-      end
+      "#{person.name} was born in #{person.birthplace}"
+    end
+  end
+
+  class UnknownPerson
+    def name
+      "[Unknown]"
     end
 
+    def birthplace
+      "[unknown]"
+    end
   end
 end
