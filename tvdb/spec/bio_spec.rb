@@ -1,12 +1,25 @@
 require_relative '../lib/bio'
+require_relative '../vendor/simpsons/voice_actor'
 
 RSpec.describe TVDB::Bio do
-  let(:person) { double('person', name: 'John Doe', birthplace: 'Miami, FL') }
-  subject(:bio) { TVDB::Bio.new(person) }
 
-  describe 'to_s' do
+  describe '#to_s' do
+    let(:person) { double('person', name: 'John Doe', birthplace: 'Miami, FL') }
+    subject(:bio) { TVDB::Bio.new(person) }
+
     it "returns expected string" do
       expect(bio.to_s).to eq('John Doe was born in Miami, FL')
+    end
+  end
+
+  describe 'via simpsons gem data', integration: true do
+    let(:actor) { Simpsons::VoiceActor.for_character('Homer Simpson') }
+    subject(:bio) { TVDB::Bio.new(actor) }
+
+    describe '#to_s' do
+      it 'returns expected string' do
+        expect(bio.to_s).to eq('Dan Castellaneta was born in Chicago, IL')
+      end
     end
   end
 end
