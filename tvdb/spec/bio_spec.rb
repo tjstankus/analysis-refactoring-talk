@@ -3,12 +3,8 @@ RSpec.describe TVDB::Bio do
   subject(:bio) { TVDB::Bio.new(person) }
 
   describe 'to_s' do
-    it "includes person's name" do
-      expect(bio.to_s).to include('John Doe')
+    it "returns expected string" do
+      expect(bio.to_s).to eq('John Doe was born in Miami, FL')
     end
-
-    it "includes person's birthplace"
-
-    it "returns expected string"
   end
 end
