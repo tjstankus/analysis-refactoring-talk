@@ -22,7 +22,8 @@ RSpec.describe TVDB::Bio do
       end
 
       describe 'given no result for character' do
-        subject(:bio) { TVDB::Bio.new(nil) }
+        let(:actor) { Simpsons::VoiceActor.for_character('Homer Simpsn') }
+        subject(:bio) { TVDB::Bio.new(actor) }
 
         it 'returns expected string' do
           expect(bio.to_s).to eq('[Unknown] was born in [unknown]')
