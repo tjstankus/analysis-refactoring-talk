@@ -20,6 +20,14 @@ RSpec.describe TVDB::Bio do
       it 'returns expected string' do
         expect(bio.to_s).to eq('Dan Castellaneta was born in Chicago, IL')
       end
+
+      describe 'given no result for character' do
+        subject(:bio) { TVDB::Bio.new(nil) }
+
+        it 'returns expected string' do
+          expect(bio.to_s).to eq('[Unknown] was born in [unknown]')
+        end
+      end
     end
   end
 end
